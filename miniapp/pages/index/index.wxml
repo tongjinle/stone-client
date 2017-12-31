@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="game-list">
+  <view class='wrapper'>
+  <block wx:for="{{gamelist}}"  wx:key="{{game.id}}">
+    <game-list game="{{item}}"></game-list>
+  </block>
+  </view>
+</view>

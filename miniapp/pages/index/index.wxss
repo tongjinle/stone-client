@@ -1,0 +1,8 @@
+/**index.wxss**/
+page{
+  background: #222;
+}
+.wrapper{
+  width: 640rpx;
+  margin: 0 auto;
+}

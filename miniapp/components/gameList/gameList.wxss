@@ -1,0 +1,17 @@
+/* components/gameList/gameList.wxss */
+.game{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.game .game-image-wrapper image{
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #888; 
+}
+.game .game-title{
+  font-size: 32rpx;
+  letter-spacing: 0.5px;
+  margin-left: 40rpx;
+  color: #888;
+}
