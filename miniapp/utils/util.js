@@ -1,19 +1,41 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+let promise;
+let ajax = function ({ url, data = {}, method = 'GET'}){
+  promise.then(options=>{
+    let currentData = Object.assign({}, data);
+    let reg = /\auth\//g;
+    let header = reg.test(url)? Object.assign({},options) :{};
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url:url,
+        method,
+        header,
+        currentData,
+        success: res => {
+          resolve(res)
+        },
+        fail: err => {
+          reject(err);
+        }
+      })
+    })
+  })
+};
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+let login  = function (){
+    wx.login({
+      success:res=>{
+        if(res.code){
+          let options  = {
+            code: res.code
+          }
+          //code换取openId
+           Promise.resolve(options);
+        }
+      }
+  })
 }
 
 module.exports = {
-  formatTime: formatTime
+  login,
+  ajax
 }

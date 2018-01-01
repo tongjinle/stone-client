@@ -1,8 +1,17 @@
 <!--index.wxml-->
+<view class='swiper-wrapper'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:{{clientWidth}}px;height:450rpx">
+    <block wx:for="{{swiperList}}" wx:key="{{item.id}}" loop='{{loop}}'>
+      <swiper-item>
+        <image src="{{item.src}}" class="slide-image" bindtap="chooseimg" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
 <view class="game-list">
   <view class='wrapper'>
-  <block wx:for="{{gamelist}}"  wx:key="{{game.id}}">
-    <game-list game="{{item}}"></game-list>
-  </block>
+    <block wx:for="{{gamelist}}" wx:key="{{game.id}}">
+      <game-list game="{{item}}" bindchooseUrl="chooseUrl"></game-list>
+    </block>
   </view>
 </view>

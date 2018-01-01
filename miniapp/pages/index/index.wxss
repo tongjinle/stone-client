@@ -2,6 +2,12 @@
 page{
   background: #222;
 }
+.swiper-wrapper{
+  margin-bottom: 20rpx;
+}
+.slide-image{
+  width: 100%;
+}
 .wrapper{
   width: 640rpx;
   margin: 0 auto;

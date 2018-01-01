@@ -1,4 +1,4 @@
-<view class='game' bindtap='choose' dateset-id='{{game.id}}'>
+<view class='game' bindtap='choose' data-id='{{game.id}}'>
  <view class='game-image-wrapper'><image src="{{game.image}}"></image></view>
  <view class='game-title'>{{game.name}}</view>
 </view>

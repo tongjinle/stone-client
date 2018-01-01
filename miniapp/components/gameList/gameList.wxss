@@ -2,7 +2,7 @@
 .game{
   display: flex;
   justify-content: flex-start;
-  
+  align-items: center;
 }
 .game .game-image-wrapper image{
   width: 100rpx;

@@ -22,10 +22,9 @@ Component({
    */
   methods: {
     choose:function(e){
-      let id = e;
-      wx.navigateTo({
-        url: `/pages/severList/serverList?id=${id}`,
-      })
+      let id = e.currentTarget.dataset.id;
+      console.log(id);
+      this.triggerEvent('chooseUrl',{id});
     }
   }
 })

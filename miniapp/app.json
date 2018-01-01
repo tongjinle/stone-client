@@ -5,9 +5,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#222",
+    "navigationBarTitleText": "扑满的游戏大厅",
+    "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
     "list": [
