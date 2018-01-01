@@ -1,0 +1,7 @@
+<view class='personal-header'>
+    <view class='personal-avatar'>
+      <image src='{{userInfo.avatarUrl}}'></image>
+    </view>
+    <view class='personal-name'>{{userInfo.nickName}}</view>
+</view>
+<view class='personal-list'></view>
