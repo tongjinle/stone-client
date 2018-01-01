@@ -1,4 +1,3 @@
-// pages/personal/personal.js
 const app = getApp();
 Page({
 

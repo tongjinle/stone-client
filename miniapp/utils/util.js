@@ -27,9 +27,9 @@ let login  = function (){
         if(res.code){
           let options  = {
             code: res.code
-          }
+          };
           //code换取openId
-           Promise.resolve(options);
+           promise = Promise.resolve(options);
         }
       }
   })
