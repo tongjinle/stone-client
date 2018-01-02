@@ -38,6 +38,8 @@ method:
 ** response **
 ```
 {
+    // 是否找到个人信息
+    flag:boolean,
     // dota数字id
     dotaId:number,
     // 虚拟币
@@ -143,20 +145,23 @@ method:'get'
 route:'/auth/room/create'
 method:
 ```
-    {
-        // 新手位置数量
-    }
+{
+    // 新手位置数量
+    count:number,
+    // 黑店价格
+    coin:number,
+}
 ```
 ** response **
 ```
-    {
-        // 是否成功创建
-        flag:boolean,
-        // 错误码
-        // 0 用户已经创建了黑店
-        // 1 用户已经参加了其他人的黑店
-        code?:number,
-    }
+{
+    // 是否成功创建
+    flag:boolean,
+    // 错误码
+    // 0 用户已经创建了黑店
+    // 1 用户已经参加了其他人的黑店
+    code?:number,
+}
 ```
 > 通过黑店编号获取黑店信息
 ** request **
@@ -277,7 +282,9 @@ method:
         begin:number,
         // 好评率
         comment:{
-            good
+            good: number,
+            normal: number,
+            bad: number,
             },
         // 黑店为店主带来的虚拟币总收入
         coin:number,
