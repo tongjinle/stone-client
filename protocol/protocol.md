@@ -16,8 +16,6 @@ method:'post',
 ** response **
 ```
 {
-    // 是否绑定成功
-    flag:boolean,
     // 错误码
     code?:number,
     // 第一次绑定的奖励
@@ -38,14 +36,15 @@ method:
 ** response **
 ```
 {
-    // 是否找到个人信息
-    flag:boolean,
+    // 错误码
+    // 0 不存在此人
+    code?:number,
     // dota数字id
-    dotaId:number,
+    dotaId?:number,
     // 虚拟币
-    coin:number,
+    coin?:number,
     // 第一次绑定时间戳,精确到毫秒
-    createDate:number,
+    createDate?:number,
 }
 ```
 
@@ -77,8 +76,8 @@ method:'post',
 ** response **
 ```
 {
-    // 是否签到成功
-    flag:boolean,
+    // 错误码
+    code?:number,
     // 虚拟币奖励
     reward?:number,
 }
@@ -99,8 +98,6 @@ method:'post'
 ** response **
 ```
 {
-    // 是否成功兑换
-    flag:boolean,
     // 错误码
     // 0 金币不足
     // 1 虚拟道具出售一空或者虚拟道具不存在,即错误的道具编号
@@ -127,8 +124,8 @@ method:'get'
 ** response **
 ```
 {
-    // 是否正确查询到列表
-    flag:boolean,
+    // 错误码
+    code?:number,
     // 虚拟道具列表
     list:{
         // 道具编号
@@ -157,17 +154,17 @@ method:
 ** response **
 ```
 {
-    // 是否成功创建
-    flag:boolean,
     // 错误码
     // 0 用户已经创建了黑店
     // 1 用户已经参加了其他人的黑店
     code?:number,
+    // 生成的房间编号
+    id?:number,
 }
 ```
 > 通过黑店编号获取黑店信息
 ** request **
-route:'/auth/roomInfo'
+route:'/auth/room/info'
 method:'get'
 ```
 {
@@ -178,8 +175,6 @@ method:'get'
 ** response **
 ```
 {
-    // 是否查询成功
-    flag:boolean,
     // 错误码
     // 0 用户没有当前黑店
     code?:number,
@@ -214,7 +209,7 @@ method:'get'
 > 请求加入黑店
 ** request **
 route:'/auth/room/apply'
-method:
+method:post
 ```
 {
     roomId:number,
@@ -223,8 +218,6 @@ method:
 ** response **
 ```
 {
-    // 是否成功加入黑店
-    flag:boolean,
     // 错误码
     // 0 用户coin不够支付
     // 1 黑店不存在
@@ -236,7 +229,7 @@ method:
 > 评价黑店
 ** request **
 route:'/auth/room/comment'
-method:
+method:post
 ```
 {
     // 黑店编号
@@ -251,8 +244,6 @@ method:
 ** response **
 ```
 {
-    // 是否成功评价
-    flag:boolean,
     // 错误码
     // 0 不存在这样的黑店
     // 1 用户在该黑店没有评价权(他不在该黑店中)
@@ -264,7 +255,7 @@ method:
 > 查询开黑历史
 ** request **
 route:'/auth/room/history'
-method:
+method:get
 ```
 {
     // 页码,从0开始计数
@@ -276,10 +267,10 @@ method:
 ** response **
 ```
 {
-    // 是否查询成功
-    flag:boolean,
+    // 错误码
+    code?:number,
     // 列表
-    list:{
+    list?:{
         // 黑店的开始时间戳
         begin:number,
         // 好评率
@@ -289,7 +280,7 @@ method:
             bad: number,
             },
         // 黑店为店主带来的虚拟币总收入
-        coin:number,
+        incom:enumber,
         score:any,
         }[],
 
