@@ -1,0 +1,20 @@
+/* components/personal-item/personal-item.wxss */
+.personal-item{
+  display: flex;
+  justify-content: flex-start;
+}
+.personal-item .personal-main{
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 60rpx;
+  width: 400rpx;
+}
+.personal-main .label{
+  font-size: 32rpx;
+}
+.personal-main .value{
+  font-size: 32rpx;
+}
+.personal-item  .personal-btn{
+  font-size: 32rpx;
+}
