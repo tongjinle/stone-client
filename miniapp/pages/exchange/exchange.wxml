@@ -1,0 +1,11 @@
+<view class='exchange-page'>
+  <view class='wrapper'>
+    <view class='exchangeList'>
+      <block wx:for='{{goodsList}}' wx:key='{{goods.id}}' wx:for-item='goods' wx:for-index='idx'>
+        <goods-item goods='{{goods}}' class='goods-item' bindEventTarget='exchange'>
+
+        </goods-item>
+      </block>
+    </view>
+  </view>
+</view>
