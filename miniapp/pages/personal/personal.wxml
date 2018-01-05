@@ -12,7 +12,7 @@
     <view class='personal-item'>
       <personal-item personal='{{wallet}}' bindEventTarget='getMoney'></personal-item>
     </view>
-    <view class='personal-item exchange'>
+    <view class='personal-item exchange' bindtap='exchange'>
       前往兑换列表
     </view>
   </view>

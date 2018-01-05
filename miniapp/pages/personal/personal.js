@@ -133,5 +133,11 @@ Page({
     }).catch(err=>{
       console.log(err);
     })
+  },
+  exchange:function(){
+    let url  = `/pages/exchange/exchange`;
+    wx.navigateTo({
+      url: url,
+    })
   }
 })
