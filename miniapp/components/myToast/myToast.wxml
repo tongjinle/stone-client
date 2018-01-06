@@ -1,0 +1,4 @@
+<view class='modal'> 
+  <view class='modal-bg' bindtap='closeModal'></view>
+  <slot></slot>
+</view>

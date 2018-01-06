@@ -29,12 +29,6 @@ Page({
       }
     })
   },
-  getgameList:function(){
-    let url = 'http://www.baidu.com/auth/'
-    app.ajax({
-      url,
-    })
-  },
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -51,7 +45,6 @@ Page({
   },
   onLoad: function () {
     this.getClient();
-    this.getgameList();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

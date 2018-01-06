@@ -37,3 +37,21 @@
   font-size: 32rpx;
   text-decoration: underline;
 }
+.modal-body{
+  width: 540rpx;
+  height: 150rpx;
+  padding: 50 0rpx;
+  position: fixed;
+  background: #fff;
+  top: 50%;
+  left:50%;
+  transform: translate3d(-50%,-50%,0);
+}
+
+.modal-input{
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #ffcd32; 
+}

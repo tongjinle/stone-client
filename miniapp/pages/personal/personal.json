@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-      "personal-item":"/components/personal-item/personal-item"
+      "personal-item":"/components/personal-item/personal-item",
+      "myToast":"/components/myToast/myToast"
     }
 }
