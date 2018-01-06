@@ -33,13 +33,17 @@ method:'post',
 route:'/auth/user/info'
 method:
 ```
-{}
+{   
+    // 微信id
+    openId:string,
+}
 ```
 ** response **
 ```
 {
     // 错误码
     // 0 不存在此人
+    // 1 数据格式不对
     code?:number,
     // dota数字id
     dotaId?:number,
