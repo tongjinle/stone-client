@@ -1,10 +1,11 @@
 import CONFIG_CODE from './config.js';
+import { api } from './api.js';
 let promise;
 let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
   return promise.then(options=>{
     let currentData = Object.assign({}, data);
     let reg = /\auth\//g;
-    let header = reg.test(url) ? Object.assign(postheader, options, myheader) : {};
+    let header = reg.test(url) ? Object.assign({}, options, myheader) : {};
     return new Promise((resolve, reject) => {
       wx.request({
         url:url,
@@ -26,18 +27,30 @@ let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
 };
 
 let login  = function (){
-  let options = {
-        openId:"1234567890",
-  }
-  return promise = Promise.resolve(options);
     wx.login({
       success:res=>{
         if(res.code){
-          let options  = {
-            openId: res.code
+          let wxCode  = {
+            code: null
           };
           //code换取openId
-           promise = Promise.resolve(options);
+          let url = api.userInfo.getToken();
+          let method = 'GET'
+
+          wx.request({
+            url,
+            method,
+            data: wxCode,
+            success:res=>{
+                let options = {
+                  token: res.data.token
+                }
+                return promise = Promise.resolve(options);
+            },
+            fail:err=>{
+              return promise = Promise.reject(err);
+            }
+          })
         }
       }
   })

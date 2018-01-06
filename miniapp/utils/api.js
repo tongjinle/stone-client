@@ -6,8 +6,11 @@ api.gameList = {
   }
 }
 api.userInfo = {
+  getToken:function(){
+    return BASE_URL + '/getToken';
+  },
   bind:function(){
-    return BASE_URL + '/bind';
+    return BASE_URL + '/auth/bind';
   },
   query:function(){
     return BASE_URL + '/auth/user/info';

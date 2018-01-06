@@ -1,12 +1,10 @@
 import { api } from '../api.js';
 import { ajax } from '../util.js';
 
-export function _bind ({id,openId}){
+export function _bind ({id}){
   let data ={
     dotaId:id,
-    openId:openId
   }
-  console.log(data);
   let method ='POST';
   let url = api.userInfo.bind();
   return ajax({url,data,method})
