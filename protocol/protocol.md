@@ -18,6 +18,7 @@ method:'post',
 {
     // 错误码
     // 0 数据格式错误
+    // 1 openId已经存在了
     code?:number,
     // 第一次绑定的奖励
     reward?:number,
