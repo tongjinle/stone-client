@@ -1,14 +1,28 @@
 # 数据协议v1.0
 
+## 通过小程序的code,返回token
+** request **
+route:'/getToken'
+method:'get',
+```
+{
+    code:number,
+}
+```
+
+** response **
+{
+    code?:number,
+    token?:string,
+}
+
 ## 绑定id,使得微信openId和dota2数字id形成一个映射关系
 > 绑定id
 ** request **
-route:'/bind',
+route:'/auth/bind',
 method:'post',
 ```
 {
-    // 微信id
-    openId:string,
     // dota2数字id
     dotaId:string,
 }
