@@ -17,6 +17,7 @@ method:'post',
 ```
 {
     // 错误码
+    // 0 数据格式错误
     code?:number,
     // 第一次绑定的奖励
     reward?:number,
@@ -44,7 +45,7 @@ method:
     // 虚拟币
     coin?:number,
     // 第一次绑定时间戳,精确到毫秒
-    createDate?:number,
+    bindTime?:number,
 }
 ```
 
