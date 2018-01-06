@@ -22,6 +22,10 @@ let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
 };
 
 let login  = function (){
+  let options = {
+        openId:"1234567890",
+  }
+  return promise = Promise.resolve(options);
     wx.login({
       success:res=>{
         if(res.code){
