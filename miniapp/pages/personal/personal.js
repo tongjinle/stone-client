@@ -1,5 +1,5 @@
 const app = getApp();
-
+import {_bind,cancheck,_daycheck} from '../../utils/js/personal.js';
 import { _init } from '../../utils/personal.js'
 Page({
 
@@ -30,16 +30,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    _init().then(arr => {
-      console.log(arr);
-      let currentwallet = {
-        value: arr[1].data.reward,
-        btn: arr[0].data.flag ? '已领取' : '今日领取'
-      }
-      this.setData({
-        wallet: Object.assign(this.data.wallet, currentwallet)
-      })
-    });
   },
 
   /**
@@ -91,13 +81,10 @@ Page({
   },
   bindAccount: function (e) {
     let data = {
-      dotaId: '123'
+      openId:'1234567890',
+      id:123
     }
-    let url = app.globalData.api.userInfo.bind();
-    let method = 'POST';
-    app.ajax({
-      url, data, method
-    }).then(res=>{
+    _bind(data).then(res=>{
       console.log(res);
     }).catch(err=>{
       console.log(err)
@@ -114,6 +101,11 @@ Page({
 
       })
     }
+  },
+  showToast:function(){
+    this.setData({
+      isShow:true
+    });
   },
   canCheck:function() {
     let url = app.globalData.api.userInfo.cancheck();

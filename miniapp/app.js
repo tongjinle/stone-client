@@ -1,5 +1,5 @@
 //app.js
-import { ajax,login } from './utils/util.js';
+import { ajax,login,_init } from './utils/util.js';
 import { api } from './utils/api.js';
 
 App({
@@ -21,6 +21,7 @@ App({
     })
   },
   ajax,
+  _init,
   globalData: {
     api,
     userInfo: null
