@@ -1,0 +1,8 @@
+<view class='goods-item' data-goods-id='{{goods.id}}' bindtap='eventTarget'>
+  <view class='goods-image'>
+    <image src='{{goods.imgSrc}}' alt=''></image>
+  </view>
+  <view class='goods-name'>{{goods.name}}</view>
+  <view class='goods-price'>{{goods.price}}</view>
+  <view class='goods-btn'>{{goods.btn}}</view>
+</view>

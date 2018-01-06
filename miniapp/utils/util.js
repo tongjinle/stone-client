@@ -1,9 +1,9 @@
 let promise;
-let ajax = function ({ url, data = {}, method = 'GET'}){
-  promise.then(options=>{
+let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
+  return promise.then(options=>{
     let currentData = Object.assign({}, data);
     let reg = /\auth\//g;
-    let header = reg.test(url)? Object.assign({},options) :{};
+    let header = reg.test(url) ? Object.assign({}, options, myheader) :{};
     return new Promise((resolve, reject) => {
       wx.request({
         url:url,
@@ -26,7 +26,7 @@ let login  = function (){
       success:res=>{
         if(res.code){
           let options  = {
-            code: res.code
+            openId: res.code
           };
           //code换取openId
            promise = Promise.resolve(options);

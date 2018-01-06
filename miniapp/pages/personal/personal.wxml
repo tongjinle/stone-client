@@ -1,7 +1,19 @@
 <view class='personal-header'>
-    <view class='personal-avatar'>
-      <image src='{{userInfo.avatarUrl}}'></image>
-    </view>
-    <view class='personal-name'>{{userInfo.nickName}}</view>
+  <view class='personal-avatar'>
+    <image src='{{userInfo.avatarUrl}}'></image>
+  </view>
+  <view class='personal-name'>{{userInfo.nickName}}</view>
 </view>
-<view class='personal-list'></view>
+<view class='personal-list'>
+  <view class='personal-wrapper'>
+    <view class='personal-item'>
+      <personal-item personal='{{account}}' bindEventTarget="bindAccount"></personal-item>
+    </view>
+    <view class='personal-item'>
+      <personal-item personal='{{wallet}}' bindEventTarget='getMoney'></personal-item>
+    </view>
+    <view class='personal-item exchange' bindtap='exchange'>
+      前往兑换列表
+    </view>
+  </view>
+</view>

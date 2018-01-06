@@ -1,0 +1,13 @@
+/* pages/exchange/exchange.wxss */
+.wrapper{
+  width: 640rpx;
+  margin: 0 auto;
+}
+.exchangeList{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.exchangeList .goods-item{
+  margin-bottom: 20rpx;
+}

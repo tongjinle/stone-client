@@ -1,0 +1,7 @@
+<view class='personal-item'>
+  <view class='personal-main'>
+      <view class='label'>{{personal.key}}:</view>
+      <view class='value'>{{personal.value?personal.value:"无"}}</view>
+  </view>
+  <view class='personal-btn' bindtap="eventTarget">{{personal.btn}}</view>
+</view>

@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents": {
+      "personal-item":"/components/personal-item/personal-item"
+    }
+}
