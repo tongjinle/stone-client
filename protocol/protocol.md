@@ -48,8 +48,6 @@ route:'/auth/user/info'
 method:
 ```
 {   
-    // 微信id
-    openId:string,
 }
 ```
 ** response **
