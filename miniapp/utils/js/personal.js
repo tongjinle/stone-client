@@ -1,6 +1,7 @@
 import { api } from '../api.js';
 import { ajax } from '../util.js';
 
+
 export function _bind ({id}){
   let data ={
     dotaId:id,

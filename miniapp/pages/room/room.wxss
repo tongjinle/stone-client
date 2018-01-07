@@ -1,0 +1,13 @@
+/* pages/room/room.wxss */
+.room-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.room-page .create-room{
+  color: #ffcd32;
+  font-size: 32rpx;
+  border: 1rpx solid #ffcd32;
+  padding:10 40rpx;
+  border-radius: 2rpx;
+}

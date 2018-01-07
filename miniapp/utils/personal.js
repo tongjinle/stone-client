@@ -25,5 +25,5 @@ let _getUserInfo = function(){
       url,
       method,
       data,
-    })  
+  })  
 }
