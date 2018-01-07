@@ -161,7 +161,7 @@ method:'get'
 > 创建黑店房间
 ** request **
 route:'/auth/room/create'
-method:
+method:'post'
 ```
 {
     // 新手位置数量
