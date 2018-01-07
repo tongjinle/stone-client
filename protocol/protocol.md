@@ -144,11 +144,14 @@ method:'get'
 ```
 {
     // 错误码
+    // 0 缺少必要的参数
     code?:number,
     // 虚拟道具列表
     list:{
-        // 道具编号
-        id:number,
+        // 名称
+        name:string,
+        // 价格
+        coin:number,
         // 图片
         src:string,
     }[],
