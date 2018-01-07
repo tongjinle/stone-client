@@ -95,6 +95,7 @@ method:'post',
 ```
 {
     // 错误码
+    // 0 已经签到
     code?:number,
     // 虚拟币奖励
     reward?:number,
