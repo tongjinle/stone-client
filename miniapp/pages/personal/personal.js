@@ -80,15 +80,15 @@ Page({
     })
   },
   bindAccount: function (e) {
+    let dotaId = e.detail.value;
     let data = {
-      openId:'1234567890',
-      id:123
-    }
-    _bind(data).then(res=>{
+      id: dotaId
+    };
+    _bind(data).then(res => {
       console.log(res);
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err)
-    })
+    })     
   },
   getMoney:function(e){
     let willget = this.data.wallet.btn ==='已领取'?1:0;
@@ -106,6 +106,11 @@ Page({
     this.setData({
       isShow:true
     });
+  },
+  hideToast:function(){
+    this.setData({
+      isShow:false
+    })
   },
   canCheck:function() {
     let url = app.globalData.api.userInfo.cancheck();

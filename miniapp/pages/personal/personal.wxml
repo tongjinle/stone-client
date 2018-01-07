@@ -7,7 +7,7 @@
 <view class='personal-list'>
   <view class='personal-wrapper'>
     <view class='personal-item'>
-      <personal-item personal='{{account}}' bindEventTarget="bindAccount"></personal-item>
+      <personal-item personal='{{account}}' bindEventTarget="showToast"></personal-item>
     </view>
     <view class='personal-item'>
       <personal-item personal='{{wallet}}' bindEventTarget='getMoney'></personal-item>
@@ -18,11 +18,11 @@
   </view>
 </view>
 
-<view class='modal-wrapper' wx:if='{{isshow}}'>
-  <myToast bindcloseModal='closeModal'>
+<view class='modal-wrapper' wx:if='{{isShow}}'>
+  <myToast bindcloseModal='hideToast'>
     <view class='modal-body'>
-      <view class='close-btn' bindtap='closeModal'>X</view>
-      <view class='modal-input'><input></input></view>
+      <view class='close-btn' bindtap='hideToast'>X</view>
+      <view class='modal-input'><input bindconfirm='bindAccount' confirm-type='send' type='number'></input></view>
     </view>
   </myToast>
 </view>
