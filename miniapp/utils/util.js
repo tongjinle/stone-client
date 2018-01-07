@@ -28,6 +28,14 @@ let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
 };
 
 let login  = function (){
+    let value = wx.getStorageSync('token');
+    console.log(value);
+    if(value){
+      let options ={
+        token:value,
+      }
+      return promise = Promise.resolve(options)
+    }
     wx.login({
       success:res=>{
         if(res.code){
@@ -45,6 +53,9 @@ let login  = function (){
                 let options = {
                   token: res.data.token
                 }
+                wx.setStorageSync("token", res.data.token)
+                let token = wx.getStorageSync("token");
+                console.log(token);
                 return promise = Promise.resolve(options);
             },
             fail:err=>{
@@ -66,7 +77,15 @@ let _init = function(arr){
   return Promise.all(arr);
 }
 
-
+let _checkToken = function(){
+   let value = wx.getStorageSync("token");
+   if(value){
+     let options = {
+       token:value
+     }
+     return Promise.resolve()
+   }
+}
 
 let _checkERR =function({data}){
   if (data.code === CONFIG_CODE.ERR_OK){
