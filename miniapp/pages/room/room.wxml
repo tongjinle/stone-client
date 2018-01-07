@@ -1,0 +1,5 @@
+<view class='room-page'>
+  <form report-submit='true'>
+    <button class='create-room' bindtap='createRoom'>创建黑店</button>
+  </form>
+</view>

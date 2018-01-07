@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/personal/personal",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/personal/personal",
-    "pages/exchange/exchange"
+    "pages/exchange/exchange",
+    "pages/room/room",
+    "pages/roomInfo/roomInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,12 +16,16 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "游戏列表"
-      },
-      {
         "pagePath": "pages/personal/personal",
         "text": "个人中心"
+      },
+      {
+        "pagePath": "pages/room/room",
+        "text": "创建黑店"
+      },
+      {
+        "pagePath": "pages/exchange/exchange",
+        "text": "兑换列表"
       }
     ]
   }

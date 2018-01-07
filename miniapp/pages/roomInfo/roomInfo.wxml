@@ -1,0 +1,5 @@
+<view>房间信息（暂无数据）</view>
+<form report-submit='true'>
+   <button class='share-room' open-type='share'>转发</button>
+   <button class='join-room' bindtap='join-room'>加入</button>
+</form>

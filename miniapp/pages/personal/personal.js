@@ -1,6 +1,7 @@
 const app = getApp();
 import {_bind,cancheck,_daycheck} from '../../utils/js/personal.js';
 import { _init } from '../../utils/personal.js'
+import { _getUserInfo } from '../../utils/util.js';
 Page({
 
   /**
@@ -24,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     this.setUserInfo();
+    _getUserInfo();
   },
 
   /**

@@ -1,5 +1,6 @@
 import CONFIG_CODE from './config.js';
 import { api } from './api.js';
+const app = getApp();
 let promise;
 let ajax = function ({ url, data = {}, method = 'GET',myheader={}}){
   return promise.then(options=>{
@@ -31,12 +32,11 @@ let login  = function (){
       success:res=>{
         if(res.code){
           let wxCode  = {
-            code: null
+            code: res.code
           };
           //code换取openId
           let url = api.userInfo.getToken();
           let method = 'GET'
-
           wx.request({
             url,
             method,
@@ -56,9 +56,17 @@ let login  = function (){
   })
 }
 
-export function _init(arr){
+let _getUserInfo =function(){
+    let url = api.userInfo.query();
+    let method ='GET';
+    return ajax({method,url})
+}
+
+let _init = function(arr){
   return Promise.all(arr);
 }
+
+
 
 let _checkERR =function({data}){
   if (data.code === CONFIG_CODE.ERR_OK){
@@ -74,5 +82,6 @@ let _checkERR =function({data}){
 
 module.exports = {
   login,
-  ajax
+  ajax, _init,
+  _getUserInfo 
 }
