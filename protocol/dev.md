@@ -3,3 +3,7 @@
 
 ## 删除所有用户
 route:'/dev/user/removeAll'
+
+## 删除所有签到记录
+route:'/dev/check/removeAll'
+

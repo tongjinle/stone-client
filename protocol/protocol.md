@@ -48,8 +48,6 @@ route:'/auth/user/info'
 method:
 ```
 {   
-    // 微信id
-    openId:string,
 }
 ```
 ** response **
@@ -97,6 +95,7 @@ method:'post',
 ```
 {
     // 错误码
+    // 0 已经签到
     code?:number,
     // 虚拟币奖励
     reward?:number,
@@ -162,7 +161,7 @@ method:'get'
 > 创建黑店房间
 ** request **
 route:'/auth/room/create'
-method:
+method:'post'
 ```
 {
     // 新手位置数量
