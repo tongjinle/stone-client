@@ -1,4 +1,22 @@
 <view class='room-page'>
+  <view class='section-wrapper'>
+    <view class="section">
+      <view class="section__title">游戏人数</view>
+      <picker bindchange="choosePlayIndex" value="{{playerIndex}}" range="{{playerList}}">
+        <view class="picker">
+          {{playerList[playerIndex]}}
+        </view>
+      </picker>
+    </view>
+    <view class="section">
+      <view class="section__title">每人需支</view>
+      <picker bindchange="chooseCoinIndex" value="{{coinIndex}}" range="{{coinList}}">
+        <view class="picker">
+          {{coinList[coinIndex]}}
+        </view>
+      </picker>
+    </view>
+  </view>
   <form report-submit='true'>
     <button class='create-room' bindtap='createRoom'>创建黑店</button>
   </form>

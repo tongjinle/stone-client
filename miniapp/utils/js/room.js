@@ -1,14 +1,13 @@
 import { api } from '../api.js';
 import { ajax } from  '../util.js';
 
-let _create = function(num,coin){
+let _create = function (count=2,coin=100){
   let data = {
-    num:num,
+    count: count,
     coin:coin
   }
   let url  = api.room.create();
   let method = 'POST'
-  return Promise.resolve(2);
   return ajax({url,method,data});
 }
 

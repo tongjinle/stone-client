@@ -134,7 +134,6 @@ let _checkToken = function () {
 }
 
 let _checkERR = function ({ data }) {
-  console.log(CONFIG_CODE.CODE_NOK);
   if (data.code === CONFIG_CODE.ERR_OK) {
     return true
   } else if (data.code === CONFIG_CODE.DATA_ERR) {

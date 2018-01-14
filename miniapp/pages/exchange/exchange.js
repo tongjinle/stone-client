@@ -1,5 +1,5 @@
 // pages/exchange/exchange.js
-import { _getList ,_buygoods} from '../../utils/js/exchange.js';
+import { _getList, _buygoods, _goodsList,Goods} from '../../utils/js/exchange.js';
 console.log(_getList);
 Page({
 
@@ -7,27 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsList:[
-      {
-        id:1,
-        imgSrc:"",
-        name:"假腿",
-        price:"¥500",
-        btn:"兑换"
-      }, {
-        id: 2,
-        imgSrc: "",
-        name: "假腿",
-        price: "¥500",
-        btn: "兑换"
-      }, {
-        id: 3,
-        imgSrc: "",
-        name: "假腿",
-        price: "¥500",
-        btn: "兑换"
-      },
-    ]
+    goodsList:[],
+    page:0,
+    size:6,
+    totalCount:0,
   },
 
   /**
@@ -69,14 +52,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.scrollPage();
   },
 
   /**
@@ -86,9 +69,34 @@ Page({
   
   },
   getList:function(){
-    _getList().then(res=>{
-      console.log(res);
+    let page = this.data.page;
+    let size  = this.data.size;
+    _getList(page,size).then(res=>{
+      if(res.data.list){
+        let list = res.data.list;
+        let totalCount = res.data.totalCount;
+        let goodsList = _goodsList(list);
+        goodsList.forEach(el=>{
+          this.data.goodsList.push(el);
+        })
+        this.setData({
+          goodsList:this.data.goodsList,
+          totalCount
+        })
+      }
     })
+  },
+  scrollPage:function(){
+    let page = this.data.page;
+    let size = this.data.size;
+    let total = this.data.totalCount;
+    if (page<(total/size)-1){
+      console.log(page);
+      this.setData({
+        page: page+1,
+      });
+      this.getList();
+    }
   },
   exchange:function(e){
     let goodsId = e.detail;

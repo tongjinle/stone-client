@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    playerList:[2,3,4,5],
+    coinList:[100,200,300,400],
+    playerIndex:0,
+    coinIndex:0
   },
 
   /**
@@ -79,5 +82,15 @@ Page({
           url: `/pages/roomInfo/roomInfo?roomId=${roomId}`,
         })
     });
+  },
+  choosePlayIndex:function(e){
+    this.setData({
+      playerIndex: e.detail.value
+    })
+  },
+  chooseCoinIndex:function(e){
+    this.setData({
+      coinIndex: e.detail.value
+    })
   }
 })
