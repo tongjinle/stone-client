@@ -1,5 +1,5 @@
 const app = getApp();
-import {_bind,cancheck,_daycheck} from '../../utils/js/personal.js';
+import {_bind,_cancheck,_daycheck} from '../../utils/js/personal.js';
 import { _init } from '../../utils/personal.js'
 import { _getUserInfo } from '../../utils/util.js';
 Page({
@@ -25,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     this.getUserInfo();
+    this.getCheckStatus();
   },
 
   /**
@@ -90,10 +91,8 @@ Page({
       id: dotaId
     };
     _bind(data).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err)
-    })     
+      this.getUserInfo();
+    })    
   },
   getUserInfo:function(){
     _getUserInfo().then(res => {
@@ -102,6 +101,17 @@ Page({
       if (data.code === 100) {
         _getUserInfo().then(res=>{
           this.setAccount(res);
+        })
+      }
+    })
+  },
+  getCheckStatus:function(){
+    _cancheck().then(res=>{
+      this.setCheckStatus(res);
+    }).catch(({data})=>{
+      if(data.code ===100){
+        _cancheck().then(res=>{
+          this.setCheckStatus(res);
         })
       }
     })
@@ -120,17 +130,31 @@ Page({
       wallet:this.data.wallet
     })
   },
+  setCheckStatus:function(res){
+    if (res.data) {
+      let flag = res.data.flag;
+      this.data.wallet.btn = flag ? "每日领取" : "已领取";
+      this.setData({
+        wallet: this.data.wallet
+      })
+    }
+  },
   getMoney:function(e){
     let willget = this.data.wallet.btn ==='已领取'?1:0;
     if(willget){
       return false;
-    }else{
-      let url = app.globalData.api.userInfo.daycheck();
-      let method = '';
-      app.ajax({
-
-      })
     }
+    _daycheck().then(res=>{
+      this.getUserInfo();
+      this.getCheckStatus();
+    }).catch(({ data }) => {
+      if (data.code === 100) {
+        _daycheck().then(res=>{
+          this.getUserInfo();
+          this.getCheckStatus();
+        })
+      }
+    })
   },
   showToast:function(){
     this.setData({
@@ -140,25 +164,6 @@ Page({
   hideToast:function(){
     this.setData({
       isShow:false
-    })
-  },
-  canCheck:function() {
-    let url = app.globalData.api.userInfo.cancheck();
-    let method = 'GET';
-    app.ajax({
-      url,
-      method,
-    }).then(res=>{
-      console.log(res);
-      if(res.data){
-        let flag = res.data.flag;
-        this.data.wallet.btn = flag? "已领取":"每日领取";
-        this.setData({
-          wallet:this.data.wallet
-        })
-      }
-    }).catch(err=>{
-      console.log(err);
     })
   },
   exchange:function(){

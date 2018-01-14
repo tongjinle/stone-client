@@ -12,11 +12,12 @@ export function _bind ({id}){
 }
 export function _cancheck(){
   let method ="GET";
-  let url = api.userInfo.bind();
+  let url = api.userInfo.cancheck();
   return ajax({url,method});
 }
 
 export function _daycheck(){
   let method = 'POST';
   let url = api.userInfo.daycheck();
+  return ajax({url,method});
 }
