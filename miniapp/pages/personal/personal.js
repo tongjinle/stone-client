@@ -24,8 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setUserInfo();
-    _getUserInfo();
+    this.getUserInfo();
   },
 
   /**
@@ -38,6 +37,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setUserInfo();
     // this.canCheck();
   },
 
@@ -82,6 +82,9 @@ Page({
     })
   },
   bindAccount: function (e) {
+    if(this.data.btn === '已绑定'){
+      return;
+    }
     let dotaId = e.detail.value;
     let data = {
       id: dotaId
@@ -91,6 +94,31 @@ Page({
     }).catch(err => {
       console.log(err)
     })     
+  },
+  getUserInfo:function(){
+    _getUserInfo().then(res => {
+      this.setAccount(res);
+    }).catch(({ data }) => {
+      if (data.code === 100) {
+        _getUserInfo().then(res=>{
+          this.setAccount(res);
+        })
+      }
+    })
+  },
+  setAccount:function(res){
+    let dotaId = res.data.dotaId;
+    let coin = res.data.coin;
+    let account  ={
+      value:dotaId,
+      btn: dotaId?"已绑定":"绑定账号"
+    }
+    this.data.account=Object.assign(this.data.account,account);
+    this.data.wallet.value = coin;
+    this.setData({
+      account:this.data.account,
+      wallet:this.data.wallet
+    })
   },
   getMoney:function(e){
     let willget = this.data.wallet.btn ==='已领取'?1:0;
@@ -135,7 +163,7 @@ Page({
   },
   exchange:function(){
     let url  = `/pages/exchange/exchange`;
-    wx.navigateTo({
+    wx.switchTab({
       url: url,
     })
   }
