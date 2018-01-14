@@ -110,8 +110,8 @@ route:'auth/item/buy'
 method:'post'
 ```
 {
-    // 虚拟道具编号
-    id:number,
+    // 虚拟道具名
+    name:string,
 }
 ```
 ** response **
@@ -325,6 +325,8 @@ method:get
             lost:number,
         },
         }[],
+    // 总数
+    totalCount:number,
 
 }
 ```
