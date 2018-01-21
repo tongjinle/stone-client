@@ -1,5 +1,49 @@
-<view>房间信息（暂无数据）</view>
-<form report-submit='true'>
-   <button class='share-room' open-type='share'>转发</button>
-   <button class='join-room' bindtap='join-room'>加入</button>
+<view class="room-info">
+  <view class='room-owner info-wrapper'>
+    <view class='label'>房主</view>
+    <view class='value'>{{info.roomOwner}}</view>
+  </view>
+  <view class='room-duration info-wrapper'>
+    <view class='label'>黑店时间:</view>
+    <view class='value'>{{info.roomBeginTime}} ~ {{info.roomEndTime}}</view>
+  </view>
+  <view class='room-condition info-wrapper'>
+    <view class='room-price condition-wrapper'>
+      <view class='label'>价格:</view>
+      <view class='value'>{{info.roomPrice}}</view>
+    </view>
+    <view class='room-count condition-wrapper'>
+      <view class='label'>人数:</view>
+      <view class='value'>{{info.roomCount}}</view>
+    </view>
+  </view>
+  <view class='img-wrapper'>
+    <image src='../../images/dota2.jpeg'></image>
+  </view>
+  <view class='room-comment info-wrapper'>
+    <view class='comment-good comment'>
+      <view class='label'>好评:</view>
+      <view class='value'>{{info.good}}</view>
+    </view>
+    <view class="comment-normal comment">
+      <view class='label'>中评:</view>
+      <view class='value'>{{info.normal}}</view>
+    </view>
+    <view class='comment-bed comment'>
+      <view class='label'>差评:</view>
+      <view class='value'>{{info.bad}}</view>
+    </view>
+  </view>
+  <view class='room-mateList'>
+    <view class='room-tabname'>成员列表:</view>
+    <view wx:for="{{info.memberList}}" class='info-wrapper' wx:key='{{index}}'>
+      <view class='label'>{{index+1}}.</view>
+      <view class='value'>{{item}}</view>
+    </view>
+  </view>
+</view>
+
+<form report-submit='true' class='room-info-action'>
+  <button class='share-room' open-type='share' wx:if="{{!joinFlag}}">转发</button>
+  <button class='join-room' bindtap='joinRoom' wx:else>加入</button>
 </form>

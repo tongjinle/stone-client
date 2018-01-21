@@ -20,9 +20,21 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
-			"current": -1,
+		"game": {
 			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "roomInfo",
+					"pathName": "pages/roomInfo/roomInfo",
+					"query": "roomId=5a64d1daca0caf224e4ada53",
+					"scene": "1036",
+					"referrerInfo": {}
+				}
+			]
 		}
 	}
 }

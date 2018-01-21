@@ -35,7 +35,7 @@ api.room = {
     return BASE_URL + '/auth/room/create';
   },
   roomInfo:function(){
-    return BASE_URL + '/auth/roomInfo';
+    return BASE_URL + '/auth/room/info';
   },
   apply:function(){
     return BASE_URL + '/auth/room/apply';
