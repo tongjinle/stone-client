@@ -58,7 +58,7 @@ method:
     // 1 数据格式不对
     code?:number,
     // dota数字id
-    dotaId?:number,
+    dotaId?:string,
     // 虚拟币
     coin?:number,
     // 第一次绑定时间戳,精确到毫秒
