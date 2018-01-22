@@ -51,11 +51,19 @@ class RoomInfo{
       return `${hour}:${min}:${sec}`
     }
   }
+  checkJoin(id){
+    if (this.checkArray(this.memberList)){
+      return this.memberList.findIndex(el=>el===id)== -1?true:false;
+    } 
+  }
   checkInteger(timer){
     return Number.isInteger(timer);
   }
   checkObj(n){
     return n instanceof Object 
+  }
+  checkArray(params){
+    return Array.isArray(params);
   }
 }
 

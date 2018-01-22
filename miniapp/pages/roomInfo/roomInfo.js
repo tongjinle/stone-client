@@ -113,7 +113,8 @@ Page({
     let roomId = this.data.roomId;
     _getRoomInfo(roomId).then(res => {
       let roomInfo = new RoomInfo(res.data.info);
-      if (this.data.account !== roomInfo.roomOwner) {
+      console.log(roomInfo.checkJoin(this.data.account));
+      if (this.data.account !== roomInfo.roomOwner && roomInfo.checkJoin(this.data.account)) {
         this.setData({
           joinFlag: true
         })
@@ -140,6 +141,11 @@ Page({
   joinRoom: function () {
     let id = this.data.roomId;
     _joinRoom(id).then(res => {
+      if(true){
+        this.setData({
+          joinFlag: false
+        })
+      }
       this.getroomInfo();
     })
   },
