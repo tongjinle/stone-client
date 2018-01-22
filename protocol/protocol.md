@@ -12,6 +12,8 @@ method:'get',
 
 ** response **
 {
+    // 错误码
+    // 0 获取openId失败
     code?:number,
     token?:string,
 }
