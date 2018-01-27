@@ -22,8 +22,9 @@ Component({
    */
   methods: {
     eventTarget:function(e){
-      let goodsId = e.currentTarget.dataset.goodsId
-      this.triggerEvent('EventTarget', goodsId);     
+      console.log(e);
+      let goodsName = e.currentTarget.dataset.goodsName;
+      this.triggerEvent('EventTarget', goodsName);     
     }
   }
 })
