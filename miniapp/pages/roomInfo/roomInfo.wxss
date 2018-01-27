@@ -1,1 +1,36 @@
 /* pages/roomInfo/roomInfo.wxss */
+.room-info{
+  margin: 0 40rpx;
+  color: #f9f9f9;
+  font-size: 28rpx;
+}
+.room-info .info-wrapper{
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.room-info .room-comment,.room-info .room-condition{
+  justify-content: space-between;
+}
+.room-comment .comment,.room-condition .condition-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.room-info .label{
+  margin-right: 20rpx;
+}
+.img-wrapper {
+  margin-bottom: 30rpx;
+}
+.img-wrapper image{
+  width: 100%;
+  box-sizing: border-box;
+  height: 400rpx;
+  padding: 6rpx;
+  border: 1rpx solid #f9f9f9;
+}
+
+.room-info-action button{
+  width: 240rpx;
+  margin-top: 60rpx;
+}

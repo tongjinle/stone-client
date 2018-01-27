@@ -91,6 +91,12 @@ Page({
       id: dotaId
     };
     _bind(data).then(res => {
+      if (app.globalData.path){
+        let path = decodeURIComponent(app.globalData.path)
+        return wx.redirectTo({
+          url: `${path}`,
+        })
+      }
       this.getUserInfo();
     })    
   },
@@ -124,6 +130,7 @@ Page({
       btn: dotaId?"已绑定":"绑定账号"
     }
     this.data.account=Object.assign(this.data.account,account);
+    app.globalData.account = account;
     this.data.wallet.value = coin;
     this.setData({
       account:this.data.account,

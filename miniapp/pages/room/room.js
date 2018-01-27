@@ -74,10 +74,14 @@ Page({
     })
   },
   createRoom:function(){
-    _create().then(res => {
-        let roomId = res;
-        console.log(roomId);
-        // let roomId = res.data.id
+    let playerIndex = this.data.playerIndex;
+    let coinIndex = this.data.coinIndex;
+    let playerList = this.data.playerList;
+    let coinList = this.data.coinList;
+    let count = playerList[playerIndex];
+    let coin = coinList[coinIndex]
+    _create(count,coin).then(res => {
+        let roomId = res.data.id
         wx.navigateTo({
           url: `/pages/roomInfo/roomInfo?roomId=${roomId}`,
         })

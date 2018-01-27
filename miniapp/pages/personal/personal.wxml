@@ -22,7 +22,7 @@
   <myToast bindcloseModal='hideToast'>
     <view class='modal-body'>
       <view class='close-btn' bindtap='hideToast'>X</view>
-      <view class='modal-input'><input bindconfirm='bindAccount' confirm-type='send' type='number'></input></view>
+      <view class='modal-input'><input bindconfirm='bindAccount' confirm-type='send' type='text'></input></view>
     </view>
   </myToast>
 </view>
