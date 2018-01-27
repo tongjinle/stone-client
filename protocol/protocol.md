@@ -1,5 +1,9 @@
 # 数据协议v1.0
 
+## 错误码code
+> 100 token失效
+> 200 当用户操作黑店时,但是有当前黑店没有完成
+
 ## 通过小程序的code,返回token
 ** request **
 route:'/getToken'
@@ -65,6 +69,9 @@ method:
     coin?:number,
     // 第一次绑定时间戳,精确到毫秒
     bindTime?:number,
+    // 当前黑店
+    // 如果没有,则返回undefined
+    currRoomId:string,
 }
 ```
 
@@ -260,7 +267,7 @@ method:post
     // 0 用户coin不够支付
     // 1 黑店不存在
     // 2 黑店已经过了申请时间
-    // 3 你已经申请
+    // 3 黑店人数到达最大上限
     code?:number,
 
 }
