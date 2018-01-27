@@ -1,26 +1,28 @@
 //app.js
-import { ajax, _init } from './utils/util.js';
+import { ajax, _init, currentUrl} from './utils/util.js';
 import { api } from './utils/api.js';
-
+import { CONFIG_CODE } from './utils/config.js';
 App({
   onLaunch: function () {
     this.getSystemInfo();
-    this.getSetting(); 
+    this.getUserInfo(); 
     wx.setEnableDebug({
       enableDebug: true
     })
   },
-  getSetting: function () {
-    wx.getUserInfo({
-      success: res => {
-        console.log(res);
-        this.globalData.userInfo = res.userInfo
-        if (this.userInfoReadyCallback) {
-          this.userInfoReadyCallback(res)
-        }
+  getUserInfo: function () {
+    let url = api.userInfo.query();
+    this.ajax({url}).then(res=>{
+      if (res.code === CONFIG_CODE.NO_USER ){
+        this.globalData.path = currentUrl();
+        let tabUrl = '/pages/personal/persoanal'
+        return wx.switchTab({
+          url: tabUrl,
+        })
+      }else{
+        this.globalData.accountInfo = res.data; 
       }
     })
-
   },
   getSystemInfo: function () {
     wx.getSystemInfo({
@@ -34,6 +36,7 @@ App({
   _init,
   globalData: {
     api,
+    accountInfo:null,
     userInfo: null,
     winWidth: null,
     winHeight: null,

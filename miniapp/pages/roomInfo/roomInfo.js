@@ -85,9 +85,12 @@ Page({
     }
   },
   init: function () {
-    if (!app.globalData.account) {
+    if (!app.globalData.acountInfo) {
       _getUserInfo().then(res => {
-        this.data.account = res.data.dotaId;
+        if (res.code !== CONFIG.NO_USER){
+          app.global.accountInfo = res.data;
+          this.data.account = res.data.dotaId;
+        }
         this.getroomInfo();
       }).catch(err => {
         if (err.data.code == 0 || err.data.code == 100) {

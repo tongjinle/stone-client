@@ -119,9 +119,21 @@ let _getUserInfo = function () {
   return ajax({ method, url })
 }
 
+let getAccountInfo = function(){
+  let app = getApp();
+  return app.globalData.accountInfo;
+}
+
 let _init = function (arr) {
   return Promise.all(arr);
 }
+
+let currentUrl = function(){
+  let pages = getCurrentPages();
+  var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+  return encodeURIComponent(currentPage.route); 
+}
+
 
 let _checkToken = function () {
   let value = wx.getStorageSync("token");
@@ -152,5 +164,7 @@ let _checkERR = function ({ data }) {
 module.exports = {
   login,
   ajax, _init,
-  _getUserInfo
+  _getUserInfo,
+  currentUrl,
+  getAccountInfo
 }

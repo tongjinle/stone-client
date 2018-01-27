@@ -1,6 +1,6 @@
 // pages/exchange/exchange.js
 import { _getList, _buygoods, _goodsList,Goods} from '../../utils/js/exchange.js';
-console.log(_getList);
+import { getAccountInfo } from '../../utils/util.js'
 Page({
 
   /**
@@ -99,9 +99,11 @@ Page({
     }
   },
   exchange:function(e){
+    if(!getAccountInfo){
+      return 
+    }
     let goodsname = e.detail;
     _buygoods(goodsname).then(res=>{
-      console.log(res);
     })
   }
 })
