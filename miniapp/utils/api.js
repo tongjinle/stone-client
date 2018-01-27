@@ -1,5 +1,5 @@
 let api  = {}
-let BASE_URL = 'http://localhost:3000';
+let BASE_URL = 'http://api.puman.xyz:3000';
 api.gameList = {
   query:function(){
     return BASE_URL + ''; 

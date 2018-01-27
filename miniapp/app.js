@@ -5,7 +5,10 @@ import { api } from './utils/api.js';
 App({
   onLaunch: function () {
     this.getSystemInfo();
-    this.getSetting();
+    this.getSetting(); 
+    wx.setEnableDebug({
+      enableDebug: true
+    })
   },
   getSetting: function () {
     wx.getUserInfo({
