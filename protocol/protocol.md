@@ -25,7 +25,7 @@ method:'get',
 ## 绑定id,使得微信openId和dota2数字id形成一个映射关系
 > 绑定id
 ** request **
-route:'/auth/bind',
+route:'/bind',
 method:'post',
 ```
 {
