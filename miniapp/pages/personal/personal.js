@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserInfo();
+    // this.getUserInfo();
     this.getCheckStatus();
   },
 
@@ -39,7 +39,6 @@ Page({
    */
   onShow: function () {
     this.setUserInfo();
-    // this.canCheck();
   },
 
   /**
@@ -173,10 +172,4 @@ Page({
       isShow:false
     })
   },
-  exchange:function(){
-    let url  = `/pages/exchange/exchange`;
-    wx.switchTab({
-      url: url,
-    })
-  }
 })

@@ -1,6 +1,6 @@
 // pages/exchange/exchange.js
 import { _getList, _buygoods, _goodsList,Goods} from '../../utils/js/exchange.js';
-console.log(_getList);
+import { getAccountInfo } from '../../utils/util.js'
 Page({
 
   /**
@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**
@@ -99,9 +99,11 @@ Page({
     }
   },
   exchange:function(e){
-    let goodsId = e.detail;
-    _buygoods(goodsId).then(res=>{
-      console.log(res);
+    if(!getAccountInfo){
+      return 
+    }
+    let goodsname = e.detail;
+    _buygoods(goodsname).then(res=>{
     })
   }
 })

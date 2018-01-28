@@ -13,11 +13,11 @@ export function _getList(page=0,size=6){
   })
 }
 
-export function _buygoods(id){
+export function _buygoods(goodsname){
   let url = api.goods.buy();
   let method = 'POST';
   let data = {
-    id,
+    name: goodsname
   }
   return ajax({
     url,data,method

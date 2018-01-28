@@ -1,4 +1,4 @@
-<view class='goods-item' data-goods-id='{{goods.id}}' bindtap='eventTarget'>
+<view class='goods-item' data-goods-name='{{goods.name}}' bindtap='eventTarget'>
   <view class='goods-image'>
     <image src='{{goods.imgSrc}}' alt=''></image>
   </view>

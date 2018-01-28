@@ -3,6 +3,7 @@ let CONFIG_CODE ={
   OPEN_EXISTED:"1",
   CODE_NOK:100,
   ERR_OK:undefined,
+  NO_USER:'0'
 }
 
 module.exports={
