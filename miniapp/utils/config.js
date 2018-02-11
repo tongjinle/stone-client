@@ -6,6 +6,13 @@ let CONFIG_CODE ={
   NO_USER:'0'
 }
 
+let COMMENT_DICT={
+  GOOD:1,
+  NORMAL:0,
+  BAD:-1
+}
+
 module.exports={
-  CONFIG_CODE
+  CONFIG_CODE,
+  COMMENT_DICT
 }

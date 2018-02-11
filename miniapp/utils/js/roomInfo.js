@@ -20,6 +20,17 @@ let _joinRoom = function(id){
   return ajax({url,method,data});
 }
 
+let _comment =function(status,id){
+  let url = api.room.comment();
+  let method = 'POST';
+  let data ={
+    comment: status,
+    roomId: id
+  }
+  return ajax({url,method,data})
+}
+
+
 
 class RoomInfo{
   constructor(arg){
@@ -45,9 +56,9 @@ class RoomInfo{
       let year = currentTimer.getFullYear();
       let month = currentTimer.getMonth() + 1;
       let day = currentTimer.getDate();
-      let hour = currentTimer.getHours();
-      let min = currentTimer.getMinutes();
-      let sec = currentTimer.getSeconds();
+      let hour = this.pluszero(currentTimer.getHours());
+      let min = this.pluszero(currentTimer.getMinutes());
+      let sec = this.pluszero(currentTimer.getSeconds());
       return `${hour}:${min}:${sec}`
     }
   }
@@ -55,6 +66,12 @@ class RoomInfo{
     if (this.checkArray(this.memberList)){
       return this.memberList.findIndex(el=>el===id)== -1?true:false;
     } 
+  }
+  pluszero(num){
+    if(num>9){
+      return num
+    }
+    return `0${num}`   
   }
   checkInteger(timer){
     return Number.isInteger(timer);
@@ -73,5 +90,6 @@ class RoomInfo{
  module.exports ={
    _getRoomInfo,
    _joinRoom,
+   _comment,
    RoomInfo
  }

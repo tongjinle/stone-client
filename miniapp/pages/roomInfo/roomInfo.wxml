@@ -21,15 +21,15 @@
     <image src='../../images/dota2.jpeg'></image>
   </view>
   <view class='room-comment info-wrapper'>
-    <view class='comment-good comment'>
+    <view class='comment-good comment' bindtap='comment' data-comment='GOOD'>
       <view class='label'>好评:</view>
       <view class='value'>{{info.good}}</view>
     </view>
-    <view class="comment-normal comment">
+    <view class="comment-normal comment" bindtap='comment' data-comment='NORMAL'>
       <view class='label'>中评:</view>
       <view class='value'>{{info.normal}}</view>
     </view>
-    <view class='comment-bed comment'>
+    <view class='comment-bad comment' bindtap='comment' data-comment='BAD'>
       <view class='label'>差评:</view>
       <view class='value'>{{info.bad}}</view>
     </view>
