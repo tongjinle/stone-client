@@ -10,7 +10,6 @@ let ajax = function ({ url, data = {}, method = 'GET', myheader = {} }) {
       wx.login({
         success: res => {
           if (res.code) {
-            console.log(res);
             let wxCode = {
               code: res.code
             };
@@ -60,11 +59,7 @@ let ajax = function ({ url, data = {}, method = 'GET', myheader = {} }) {
         header,
         data: currentData,
         success: res => {
-          if (_checkERR(res)) {
-            resolve(res)
-          } else {
-            reject(res)
-          }
+          resolve(res);
         },
         fail: err => {
           reject(err);

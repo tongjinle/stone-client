@@ -12,6 +12,7 @@ App({
   },
   getUserInfo: function () {
     let url = api.userInfo.query();
+    wx.removeStorageSync('token');
     this.ajax({url}).then(res=>{
       if (res.code === CONFIG_CODE.NO_USER ){
         this.globalData.path = currentUrl();
@@ -20,7 +21,14 @@ App({
           url: tabUrl,
         })
       }else{
-        this.globalData.accountInfo = res.data; 
+        this.globalData.accountInfo = res.data;
+        if (res.data.currRoomId){
+          let currRoomId = res.data.currRoomId;
+          let tabUrl = `/pages/roomInfo/roomInfo`;
+          return wx.navigateTo({
+            url: `${tabUrl}?roomId=${currRoomId}`,
+          })
+        } 
       }
     })
   },

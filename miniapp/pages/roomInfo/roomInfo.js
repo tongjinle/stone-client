@@ -1,6 +1,7 @@
 // pages/roomInfo/roomInfo.js
-import { _getRoomInfo, RoomInfo, _joinRoom } from '../../utils/js/roomInfo.js';
+import { _getRoomInfo, RoomInfo, _joinRoom, _comment} from '../../utils/js/roomInfo.js';
 import { _getUserInfo } from '../../utils/util.js';
+import { CONFIG_CODE, COMMENT_DICT} from '../../utils/config.js';
 const app = getApp();
 Page({
 
@@ -85,14 +86,13 @@ Page({
     }
   },
   init: function () {
-    if (!app.globalData.acountInfo) {
+    if (!app.globalData.accountInfo) {
       _getUserInfo().then(res => {
-        if (res.code !== CONFIG.NO_USER){
-          app.global.accountInfo = res.data;
-          this.data.account = res.data.dotaId;
-        }
+        app.globalData.accountInfo = res.data;
+        this.data.account = res.data.dotaId;
         this.getroomInfo();
       }).catch(err => {
+        console.log(err);
         if (err.data.code == 0 || err.data.code == 100) {
           let path = encodeURIComponent(`/pages/roomInfo/roomInfo?roomId=${this.data.roomId}`);
           wx.showToast({
@@ -108,7 +108,7 @@ Page({
         }
       });
     } else {
-      this.data.account = app.globalData.account.value;
+      this.data.account = app.globalData.accountInfo.dotaId;
       this.getroomInfo();
     }
   },
@@ -116,7 +116,6 @@ Page({
     let roomId = this.data.roomId;
     _getRoomInfo(roomId).then(res => {
       let roomInfo = new RoomInfo(res.data.info);
-      console.log(roomInfo.checkJoin(this.data.account));
       if (this.data.account !== roomInfo.roomOwner && roomInfo.checkJoin(this.data.account)) {
         this.setData({
           joinFlag: true
@@ -126,6 +125,7 @@ Page({
         info: roomInfo
       })
     }).catch(err => {
+      console.log(err);
       if (err.data.code == 0||err.data.code == 100) {
         let path = encodeURIComponent(`/pages/roomInfo/roomInfo?roomId=${this.data.roomId}`);
         wx.showToast({
@@ -150,6 +150,13 @@ Page({
         })
       }
       this.getroomInfo();
+    })
+  },
+  comment:function(e){
+    let id= this.data.roomId;
+    let currentComment = COMMENT_DICT[e.currentTarget.dataset.comment];
+    _comment(currentComment,id).then(res=>{
+      console.log(res);
     })
   },
   _checkUserInfo: function (manager, memberList) {

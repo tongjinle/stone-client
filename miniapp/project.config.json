@@ -33,6 +33,14 @@
 					"query": "roomId=5a66100787d8f73162f3d41e",
 					"scene": "1036",
 					"referrerInfo": {}
+				},
+				{
+					"id": -1,
+					"name": "roomInfo",
+					"pathName": "pages/exchange/exchange",
+					"query": "roomId=5a66100787d8f73162f3d41e",
+					"scene": "1036",
+					"referrerInfo": {}
 				}
 			]
 		}

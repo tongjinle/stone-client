@@ -2,6 +2,7 @@ const app = getApp();
 import {_bind,_cancheck,_daycheck} from '../../utils/js/personal.js';
 import { _init } from '../../utils/personal.js'
 import { _getUserInfo } from '../../utils/util.js';
+import { CONFIG_CODE } from '../../utils/config.js'
 Page({
 
   /**
@@ -24,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getUserInfo();
+    this.getUserInfo();
     this.getCheckStatus();
   },
 
@@ -137,6 +138,9 @@ Page({
     })
   },
   setCheckStatus:function(res){
+    if (res.data.code === CONFIG_CODE.CODE_NOK){
+      return;
+    }
     if (res.data) {
       let flag = res.data.flag;
       this.data.wallet.btn = flag ? "每日领取" : "已领取";
@@ -146,7 +150,7 @@ Page({
     }
   },
   getMoney:function(e){
-    let willget = this.data.wallet.btn ==='已领取'?1:0;
+    let willget = this.data.wallet.btn ==='已领取'?0:1;
     if(willget){
       return false;
     }
